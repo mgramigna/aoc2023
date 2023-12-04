@@ -16,9 +16,9 @@ fn part_one() -> usize {
 
             let digit_string = format!("{}{}", first_digit_char, last_digit_char);
 
-            return digit_string
+            digit_string
                 .parse::<usize>()
-                .expect("Could not parse int from string");
+                .expect("Could not parse int from string")
         })
         .sum();
 

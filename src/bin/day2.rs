@@ -25,7 +25,7 @@ impl FromStr for CubeSet {
         let mut num_green: Option<usize> = None;
         let mut num_blue: Option<usize> = None;
         for cubes in list {
-            let (num_str, color) = cubes.split_once(" ").unwrap();
+            let (num_str, color) = cubes.split_once(' ').unwrap();
             let num = num_str.parse::<usize>().unwrap();
 
             match color {
@@ -49,7 +49,7 @@ impl FromStr for Game {
 
     fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
         let (game_identifier, set_list) = s.split_once(": ").unwrap();
-        let (_, game_id_str) = game_identifier.split_once(" ").unwrap();
+        let (_, game_id_str) = game_identifier.split_once(' ').unwrap();
 
         let sets: Vec<CubeSet> = set_list
             .split("; ")
@@ -95,7 +95,7 @@ impl CubeSet {
     }
 }
 
-fn part_one(games: &Vec<Game>) -> usize {
+fn part_one(games: &[Game]) -> usize {
     games
         .iter()
         .filter(|game| game.is_possible())
@@ -103,7 +103,7 @@ fn part_one(games: &Vec<Game>) -> usize {
         .sum()
 }
 
-fn part_two(games: &Vec<Game>) -> usize {
+fn part_two(games: &[Game]) -> usize {
     games
         .iter()
         .map(|game| game.min_possible())
